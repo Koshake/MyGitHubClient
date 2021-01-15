@@ -1,23 +1,22 @@
 package com.koshake1.mygithubclient.mvp.presenter
 
-import com.koshake1.mygithubclient.CounterNum
-import com.koshake1.mygithubclient.mvp.model.CountersModel
+import com.koshake1.mygithubclient.mvp.model.GithubUser
+import com.koshake1.mygithubclient.mvp.model.GithubUsersRepo
+import com.koshake1.mygithubclient.mvp.presenter.list.IUserListPresenter
 import com.koshake1.mygithubclient.mvp.view.MainView
+import com.koshake1.mygithubclient.mvp.view.list.IUserItemView
+import com.koshake1.mygithubclient.navigation.Screens
+import moxy.MvpPresenter
+import ru.terrakok.cicerone.Router
 
-class MainPresenter(private val view: MainView) {
-    private val model = CountersModel()
+class MainPresenter(private val router: Router) : MvpPresenter<MainView>() {
 
-    fun counterClick(id: CounterNum) {
-        when (id) {
-            CounterNum.FIRST -> {
-                view.setButtonText(CounterNum.FIRST, model.next(id.num).toString())
-            }
-            CounterNum.SECOND -> {
-                view.setButtonText(CounterNum.SECOND, model.next(id.num).toString())
-            }
-            CounterNum.THIRD -> {
-                view.setButtonText(CounterNum.THIRD, model.next(id.num).toString())
-            }
-        }
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        router.replaceScreen(Screens.UsersScreen())
+    }
+
+    fun backClicked() {
+        router.exit()
     }
 }
