@@ -3,4 +3,6 @@
     <string name="counter_one">Counter 1</string>
     <string name="counter_two">Counter 2</string>
     <string name="counter_three">Counter 3</string>
+    <string name="id">Id</string>
+    <string name="repo">repo</string>
 </resources>

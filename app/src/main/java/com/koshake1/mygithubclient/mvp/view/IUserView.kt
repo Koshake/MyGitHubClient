@@ -5,4 +5,8 @@ import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface MainView : MvpView
+interface IUserView : MvpView {
+    fun setTitle(text: String)
+    fun updateList()
+    fun init()
+}
